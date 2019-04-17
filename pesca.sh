@@ -33,7 +33,7 @@ then
     if [[ $1 = "-sn" ]]
     then
       echo "Spengo il PC."
-      # shutdown now
+      shutdown now
       exit 0
     fi
     echo -e "Hai aggiornato il tarallo? \e[5;1mVERO\e[0m? [s/n]"
@@ -53,7 +53,7 @@ then
       echo "Va bene: tra 10 secondi il PC si spegnerà. Nel frattempo gioca pure con questo gattino."
       timeout 10 oneko
       echo "Ciao."
-    # shutdown now
+      shutdown now
       exit 0
     else
       echo "Ok, per te niente gattino. Ciao."
