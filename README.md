@@ -12,6 +12,8 @@ and run it whit
 
     ./pesca.sh
     
+Please don't use `sudo`. It will ask the admin password when necessary.
+    
 If you have to leave the computer alone you can use this script whit `-sn` parameter
 
     ./pesca.sh -sn
