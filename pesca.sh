@@ -27,6 +27,21 @@ entra () {
   echo
 }
 
+codice_pc () {
+  uguali=false
+  while [[ "$uguali" = "false" ]]; do
+    echo "Codice di questo pc: "
+    read codice
+    echo "Ripetimelo: "
+    read codice2
+    if [[ $codice = $codice2 ]]; do
+      uguali=true
+    else
+      echo "I codici sono diversi!1!!!!1!1!!!!! Digita di nuovo!1!1!!!!!"
+    fi
+  done
+}
+
 wget -q --tries=10 --timeout=20 --spider http://weeeopen.polito.it/
 while [[ $? -ne 0 ]]
 do
@@ -60,8 +75,21 @@ then
       if [[ "$response" =~ ^(aggiorna|a)$ ]]
       then
         echo "Ok, lo faccio io per te. 😉"
-        entra
-#       API stuff here
+        $login_rc = -1
+        while [[ $login_rc -ne 204 ]]; do
+          entra
+          login_rc=$(curl -s -o /dev/null -c jar.txt -H "Accept: application/json" -H "Content-Type: application/json" --request "POST" -w "%{http_code}" --data "{\"username\":\"$username\",\"password\":\"$password\"}" http://localhost:8080/v1/session)
+          echo Il tarallo dice $login_rc al tuo tentativo di login
+        done
+
+        # TODO: test everything
+        features_rc=$(curl -s -o /dev/null -c jar.txt -H "Accept: application/json" -H "Content-Type: application/json" --request "PATCH" -w "%{http_code}" --data "{\"restrictions\":\"ready\"}" "http://localhost:8080/v1/item/$codice/features")
+        # TODO: check return code
+        # TODO: add software to hard disk(s) (will be insanely difficult since we need to get the code... or ask it, but that's boring)
+        move_rc=$(curl -s -o /dev/null -c jar.txt -H "Accept: application/json" -H "Content-Type: application/json" --request "PUT" -w "%{http_code}" --data "\"GroundZone\"" "http://localhost:8080/v1/item/$codice/parent")
+        # TODO: check return code
+
+        rm jar.txt
         echo -e "\e[1;92mFatto.\e[0m"
       else
         echo "Che cosa stai aspettando: fallo subito! 👉 https://tarallo.weeeopen.it/ [Ctrl+🖱]"
