@@ -19,6 +19,14 @@ pulisci () {
   sudo apt -y autoremove oneko
 }
 
+entra () {
+  echo "Inserisci il tuo nome utente del tarallo:" 
+  read username
+  echo -n "Password:" 
+  read -s password
+  echo
+}
+
 wget -q --tries=10 --timeout=20 --spider http://weeeopen.polito.it/
 while [[ $? -ne 0 ]]
 do
@@ -42,14 +50,22 @@ then
       shutdown now
       exit 1
     fi
-    echo -e "Hai aggiornato il tarallo? \e[5;1mVERO\e[0m? [s/n]"
+    echo -e "Hai aggiornato il tarallo? \e[5;1mVERO\e[0m? Se vuoi lo posso fare io per te! [Si/No/Aggiorna]"
     read response
     response=${response,,}
     if [[ "$response" =~ ^(si|s)$ ]]
     then
       echo "Ma che bravo!"
     else
-      echo "Che cosa stai aspettando: fallo subito! 👉 https://tarallo.weeeopen.it/ [Ctrl+🖱]"
+      if [[ "$response" =~ ^(aggiorna|a)$ ]]
+      then
+        echo "Ok, lo faccio io per te. 😉"
+        entra
+#       API stuff here
+        echo -e "\e[1;92mFatto.\e[0m"
+      else
+        echo "Che cosa stai aspettando: fallo subito! 👉 https://tarallo.weeeopen.it/ [Ctrl+🖱]"
+      fi
     fi
     echo "Ora vuoi spegnere il PC? [s/n]"
     read responsea
