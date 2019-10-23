@@ -1,6 +1,6 @@
 # PESCA
 
-#### Preparazione Effettuata tramite Script dei Computer Amorevoli
+#### Preparazione Effettuata tramite Script dei Computer Anarchici
 
 Run this script after the installation of Xubuntu on the machine preparing it for donation.
 
