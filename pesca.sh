@@ -32,8 +32,8 @@ echo -e "\e[1;34mAttivo aggiornamento orario tramite NTP..."
 if sudo timedatectl set-ntp true
 then
   echo -e "\e[1;92mFatto\e[0m. \e[1;34mAggiorno e installo software nuovo di zecca..."
-  if sudo apt update && sudo apt -y upgrade && sudo apt -y install vlc oneko
-  #installa
+  #if sudo apt update && sudo apt -y upgrade && sudo apt -y install vlc oneko
+  installa
   then
     clear
     echo -e "\e[1;92mFatto.\e[1m Ora è possibile spegnere questo rottame e sbatterlo nella \e[102;97mG\e[107;92mr\e[102;97mo\e[107;92mu\e[102;97mn\e[107;92md\e[102;97mZ\e[107;92mo\e[102;97mn\e[107;92me\e[0m."
