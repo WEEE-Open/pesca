@@ -22,6 +22,3 @@ in order to shut down the machine auotmatically when the script ends its job.
 
 Enjoy.
 
-## Further development
-
-- [ ] Use `debconf-apt-progress` instead of `apt` to improve visual appeal (it's in the "installa" funcion but it's unused).
