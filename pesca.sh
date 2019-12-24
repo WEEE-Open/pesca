@@ -5,12 +5,13 @@
 #set -x
 
 installa () {
+  echo "Current debconf configuration:"
   debconf-apt-progress --conf
   . /usr/share/debconf/confmodule
   debconf-apt-progress --start
-  debconf-apt-progress --from 0 --to 20 --logfile update.txt -- apt -y update
-  debconf-apt-progress --from 20 --to 80 --logfile upgrade.txt --dlwaypoint 50 -- apt -y upgrade
-  debconf-apt-progress --from 80 --to 100 --logfile install.txt --dlwaypoint 50 -- apt -y install vlc oneko
+  debconf-apt-progress --from 0 --to 20 --logfile update.log -- apt -y update
+  debconf-apt-progress --from 20 --to 80 --logfile upgrade.log --dlwaypoint 50 -- apt -y upgrade
+  debconf-apt-progress --from 80 --to 100 --logfile install.log --dlwaypoint 50 -- apt -y install vlc oneko
   debconf-apt-progress --stop
 }
 
