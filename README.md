@@ -3,10 +3,6 @@
 #### Preparazione Effettuata tramite Script dei Computer Anarchici
 
 Run this script after the installation of Xubuntu on the machine preparing it for donation.
-
-To do that, download the script and change permission with
-
-    chmod +x pesca.sh
     
 and run it whit
 
