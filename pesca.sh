@@ -28,49 +28,49 @@ do
 done
 echo "Benvenuto nella 🍑!"
 echo -e "\e[1;34mAttivo aggiornamento orario tramite NTP..."
-if sudo timedatectl set-ntp true
+sudo timedatectl set-ntp true
+echo -e "Installo il tema Plymouth..."
+sudo cp -r weee-logo/ /usr/share/plymouth/themes/
+sudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/weee-logo/weee-logo.plymouth 100
+sudo update-alternatives --set default.plymouth /usr/share/plymouth/themes/weee-logo/weee-logo.plymouth
+sudo update-initramfs -u
+echo -e "Aggiorno e installo software nuovo di zecca..."
+if sudo apt update && sudo apt -y upgrade && sudo apt -y install vlc oneko
+#installa
 then
-  echo -e "\e[1;92mFatto\e[0m. \e[1;34mAggiorno e installo software nuovo di zecca..."
-  if sudo apt update && sudo apt -y upgrade && sudo apt -y install vlc oneko
-  #installa
+  clear
+  echo -e "\e[1;92mFatto.\e[1m Ora è possibile spegnere questo rottame e sbatterlo nella \e[102;93mG\e[103;92mr\e[102;93mo\e[103;92mu\e[102;93mn\e[103;92md\e[102;93mZ\e[103;92mo\e[102;93mn\e[103;92me\e[0m."
+  if [[ $1 = "-sn" ]]
   then
-    clear
-    echo -e "\e[1;92mFatto.\e[1m Ora è possibile spegnere questo rottame e sbatterlo nella \e[102;97mG\e[107;92mr\e[102;97mo\e[107;92mu\e[102;97mn\e[107;92md\e[102;97mZ\e[107;92mo\e[102;97mn\e[107;92me\e[0m."
-    if [[ $1 = "-sn" ]]
-    then
-      pulisci
-      shutdown now
-      exit 1
-    fi
-    echo -e "Hai aggiornato il tarallo? \e[5;1mVERO\e[0m? [s/n]"
-    read response
-    response=${response,,}
-    if [[ "$response" =~ ^(si|s)$ ]]
-    then
-      echo "Ma che bravo!"
-    else
-      echo "Che cosa stai aspettando: fallo subito! 👉 https://tarallo.weeeopen.it/ [Ctrl+🖱]"
-    fi
-    echo "Ora vuoi spegnere il PC? [s/n]"
-    read responsea
-    responsea=${responsea,,}
-    if [[ "$responsea" =~ ^(si|s)$ ]]
-    then
-      echo "Va bene: tra 10 secondi il PC si spegnerà. Nel frattempo gioca pure con questo gattino."
-      timeout 10 oneko
-      pulisci
-      shutdown now
-    else
-      echo "Ok, per te niente gattino."
-      pulisci
-    fi
+    pulisci
+    shutdown now
+    exit 1
+  fi
+  echo -e "\e[1mHai aggiornato il tarallo? \e[5mVERO\e[0m? [s/N]"
+  read response
+  response=${response,,}
+  if [[ "$response" =~ ^(si|s)$ ]]
+  then
+    echo "Ma che bravo!"
   else
-    echo -e "\e[91;1mSi è verificato un errore in apt. Controlla la console."
-    exit -1
+    echo "Che cosa stai aspettando: fallo subito! 👉 https://tarallo.weeeopen.it/ [Ctrl+🖱]"
+  fi
+  echo "Ora vuoi spegnere il PC? [s/n]"
+  read responsea
+  responsea=${responsea,,}
+  if [[ "$responsea" =~ ^(si|s)$ ]]
+  then
+    echo "Va bene: tra 10 secondi il PC si spegnerà. Nel frattempo gioca pure con questo gattino."
+    timeout 10 oneko
+    pulisci
+    shutdown now
+  else
+    echo "Ok, per te niente gattino."
+    pulisci
   fi
 else
-  echo -e "\e[91;1mSi è verificato un errore in timedatectl. Controlla la console."
-  exit -2
+  echo -e "\e[91;1mSi è verificato un errore in apt. Controlla la console."
+  exit -1
 fi
 clear
 echo -e "\e[1;92mFinito.\e[0;1m 👌 Ciao."
