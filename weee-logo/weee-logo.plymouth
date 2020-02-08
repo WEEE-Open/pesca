@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=WEEE Open logo
+Description=Tema con il logo di WEEE Open e un cacciavite che gira.
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/weee-logo
+ScriptFile=/usr/share/plymouth/themes/weee-logo/weee-logo.script
