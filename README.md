@@ -27,6 +27,8 @@ in order to shut down the machine auotmatically when the script ends its job.
 
 Enjoy.
 
+![Plymouth screenshot](screenshot.png)
+
 ## Further development
 
 - [ ] Use `debconf-apt-progress` instead of `apt` to improve visual appeal (it's in the "installa" funcion but it's unused).
@@ -43,5 +45,5 @@ If you want to install only our fancy Plymouth theme:
     sudo update-alternatives --set default.plymouth /usr/share/plymouth/themes/weee-logo/weee-logo.plymouth
     sudo update-initramfs -u
 
-Those commands work only in Ubuntu and derivatives.
-As they say in Tuscany: `Sono 'azzi tuoi!` if you are running other distros like Debian or Arch.
+Those commands work in Ubuntu and derivatives only.
+As they say in Tuscany: `Sono hazzi tua!` if you are running other distros like Debian or Arch.
