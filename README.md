@@ -4,11 +4,16 @@
 
 Run this script after the installation of Xubuntu on the machine preparing it for donation.
 
-To do that, download the script and change permission with
+To do that, download the script:
+
+    git clone https://github.com/WEEE-Open/pesca.git
+    cd pesca
+
+change permission:
 
     chmod +x pesca.sh
     
-and run it whit
+and run it:
 
     ./pesca.sh
     
@@ -25,3 +30,18 @@ Enjoy.
 ## Further development
 
 - [ ] Use `debconf-apt-progress` instead of `apt` to improve visual appeal (it's in the "installa" funcion but it's unused).
+
+
+## Only Plymouth
+
+If you want to install only our fancy Plymouth theme:
+
+    git clone https://github.com/WEEE-Open/pesca.git
+    cd pesca
+    sudo cp -r weee-logo/ /usr/share/plymouth/themes/
+    sudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/weee-logo/weee-logo.plymouth 100
+    sudo update-alternatives --set default.plymouth /usr/share/plymouth/themes/weee-logo/weee-logo.plymouth
+    sudo update-initramfs -u
+
+Those commands work only in Ubuntu and derivatives.
+As they say in Tuscany: `Sono 'azzi tuoi!` if you are running other distros like Debian or Arch.
