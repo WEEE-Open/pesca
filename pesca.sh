@@ -12,10 +12,10 @@ echo -e "Benvenuto nella 🍑!"
 echo -e "\e[31mAttivo aggiornamento orario tramite NTP...\e[0;1m"
 sudo timedatectl set-ntp true
 echo -e "\e[32mInstallo il tema Plymouth...\e[0;1m"
-sudo cp -r .weee-logo/ /usr/share/plymouth/themes/weee-logo
+sudo cp -r weee-logo/ /usr/share/plymouth/themes/weee-logo
 sudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/weee-logo/weee-logo.plymouth 100
 sudo update-alternatives --set default.plymouth /usr/share/plymouth/themes/weee-logo/weee-logo.plymouth
-sudo cp .01-weeeopen /etc/update-motd.d/01-weeeopen
+sudo cp 01-weeeopen /etc/update-motd.d/01-weeeopen
 sudo chown root:root /etc/update-motd.d/01-weeeopen
 sudo chmod 755 /etc/update-motd.d/01-weeeopen
 echo -e "\e[33mAggiorno e installo software nuovo, fiammante..."
