@@ -1,4 +1,4 @@
-# PESCA
+# PESCA 🍑
 
 #### Preparazione Effettuata tramite Script dei Computer Anarchici
 
@@ -29,10 +29,9 @@ Enjoy.
 
 ![Plymouth screenshot](screenshot.png)
 
-## Further development
+## Canna da PESCA 🎣
 
-- [ ] Use `debconf-apt-progress` instead of `apt` to improve visual appeal (it's in the "installa" funcion but it's unused).
-
+If you want a PESCA usb thumb drive just format it in etx4 from the OEM user, label it "Pesca", copy all the stuff inside and double-click the Pesca desktop entry.
 
 ## Only Plymouth
 
