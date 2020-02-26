@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Pesca
 Comment=Esegue le operazioni da effettuare prima di donare un PC
-Exec=./.pesca.sh
+Exec=./pesca.sh
 Type=Application
 Terminal=true
 Icon=/media/oem/Pesca/.icona.png
