@@ -1,5 +1,6 @@
 #!/bin/bash
-versione="V2.5"
+versione="V2.5.1"
+i=0
 # Questo è lo script da eseguire dopo l'installazione di Xubuntu sui PC da donare
 
 #qualche controllino
@@ -10,11 +11,22 @@ do
 done
 while sudo fuser /var/lib/dpkg/lock > /dev/null 2>&1
 do
-  while ! whiptail --title "dpkg occupato" --backtitle "Pesca "$versione --yesno "dpkg è già in esecuzione, quindi non posso continuare.\nTi consiglio di riprovare più tardi o di riavviare il PC." --yes-button "Riprova" --no-button "Riavvia" 10 65
-  do
-    reboot
-    exit -1
-  done
+  if [ $i -ge 5 ]
+  then
+    i=0
+    if ! whiptail --title "dpkg occupato" --backtitle "Pesca "$versione --yesno "dpkg è già in esecuzione, quindi non posso continuare.\nVuoi provare con la forza bruta? [Sconsigliato]" --yes-button "Riprova" --no-button "Uccidi apt" 10 65
+    then
+      sudo fuser -vk /var/lib/dpkg/lock
+      sudo dpkg –configure -a
+    fi
+  else
+    i=$(( $i + 1 ))
+    if ! whiptail --title "dpkg occupato" --backtitle "Pesca "$versione --yesno "dpkg è già in esecuzione, quindi non posso continuare.\nTi consiglio di riprovare più tardi o di riavviare il PC." --yes-button "Riprova" --no-button "Riavvia" 10 65
+    then
+      reboot
+      exit -1
+    fi
+  fi
 done
 
 #inizio
@@ -30,10 +42,10 @@ else
   sudo timedatectl set-ntp true
   echo -e "\t\t\t\t\e[92m✔️"
   echo -en "\e[32mInstallo motd e tema Plymouth...\e[0;1m"
-  sudo cp -r .weee-logo/ /usr/share/plymouth/themes/weee-logo
+  sudo cp -r weee-logo/ /usr/share/plymouth/themes/weee-logo
   sudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/weee-logo/weee-logo.plymouth 100
   sudo xterm -geometry 80x24-0-0 -e update-alternatives --set default.plymouth /usr/share/plymouth/themes/weee-logo/weee-logo.plymouth
-  sudo cp .01-weeeopen /etc/update-motd.d/01-weeeopen
+  sudo cp 01-weeeopen /etc/update-motd.d/01-weeeopen
   sudo chown root:root /etc/update-motd.d/01-weeeopen
   sudo chmod 755 /etc/update-motd.d/01-weeeopen
   echo -e "\t\t\t\t\t\e[92m✔️"
@@ -43,7 +55,7 @@ sudo xterm -geometry 80x24-0-0 -e apt update
 sudo xterm -geometry 80x24-0-0 -e apt install oneko -y
 echo -en "\e[33m Nel frattempo gioca pure con questo gattino...\e[0;1m"
 oneko -bg green&
-sudo xterm -geometry 80x24-0-0 -e apt upgrade -y
+sudo xterm -geometry 80x24-0-0 -e apt full-upgrade -y
 sudo xterm -geometry 80x24-0-0 -e apt install vlc libreoffice-help-en-gb libreoffice-l10n-en-gb libreoffice-l10n-en-za mythes-en-au hunspell-en-au hyphen-en-gb thunderbird-locale-en-gb hunspell-en-gb hunspell-en-ca hunspell-en-za hyphen-en-ca -y
 echo -e "\t\e[92m✔️"
 echo -en "\e[94mPulisco i pacchetti superflui...\e[0;1m"
