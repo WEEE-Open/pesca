@@ -31,7 +31,8 @@ Enjoy.
 
 ## Canna da PESCA 🎣
 
-If you want a PESCA usb thumb drive just format it in etx4 from the OEM user, label it "Pesca", copy all the stuff inside and double-click the Pesca desktop entry.
+If you want a PESCA usb thumb drive, download pesca.img from [releases](https://github.com/WEEE-Open/pesca/releases) and copy it to the drive with `sudo dd if=pesca.img of=/dev/sdX1`.
+After that, plug it into the computer where you want to execute it and double-click the Pesca desktop entry.
 
 ## Only Plymouth
 
