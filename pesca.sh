@@ -16,8 +16,8 @@ do
     i=0
     if ! whiptail --title "dpkg occupato" --backtitle "Pesca "$versione --yesno "dpkg è già in esecuzione, quindi non posso continuare.\nVuoi provare con la forza bruta? [Sconsigliato]" --yes-button "Riprova" --no-button "Uccidi apt" 10 65
     then
-      sudo fuser -vk /var/lib/dpkg/lock
-      sudo dpkg –configure -a
+      sudo fuser -vk /var/lib/dpkg/lock > /dev/null
+      sudo dpkg --configure -a > /dev/null
     fi
   else
     i=$(( $i + 1 ))
