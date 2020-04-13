@@ -56,11 +56,12 @@ sudo xterm -geometry 80x24-0-0 -e apt install oneko -y
 echo -en "\e[33m Nel frattempo gioca pure con questo gattino...\e[0;1m"
 oneko -bg green&
 sudo xterm -geometry 80x24-0-0 -e apt full-upgrade -y
-sudo xterm -geometry 80x24-0-0 -e apt install vlc libreoffice-help-en-gb libreoffice-l10n-en-gb libreoffice-l10n-en-za mythes-en-au hunspell-en-au hyphen-en-gb thunderbird-locale-en-gb hunspell-en-gb hunspell-en-ca hunspell-en-za hyphen-en-ca -y
+sudo xterm -geometry 80x24-0-0 -e apt install vlc xul-ext-ublock-origin libreoffice-help-en-gb libreoffice-l10n-en-gb libreoffice-l10n-en-za mythes-en-au hunspell-en-au hyphen-en-gb thunderbird-locale-en-gb hunspell-en-gb hunspell-en-ca hunspell-en-za hyphen-en-ca -y
 echo -e "\t\e[92m✔️"
 echo -en "\e[94mPulisco i pacchetti superflui...\e[0;1m"
 killall oneko
-sudo xterm -geometry 80x24-0-0 -e apt autoremove oneko -y
+sudo xterm -geometry 80x24-0-0 -e apt purge oneko -y
+sudo xterm -geometry 80x24-0-0 -e apt autoremove
 echo -e "\t\t\t\t\t\e[92m✔️"
 echo "Pesca "$versione" eseguita da "$nome" in data "$(date) > ~/Desktop/info_pesca.txt
 echo -e "\e[0;1mOra è possibile spegnere questo rottame e sbatterlo nella \e[0;102;30mG\e[103mr\e[102mo\e[103mu\e[102mn\e[103md\e[102mZ\e[103mo\e[102mn\e[103me\e[0;1m."
