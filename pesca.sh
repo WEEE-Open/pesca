@@ -1,5 +1,5 @@
 #!/bin/bash
-versione="V2.5.1"
+versione="V2.5.2 Tabacchiera"
 i=0
 # Questo è lo script da eseguire dopo l'installazione di Xubuntu sui PC da donare
 
@@ -50,6 +50,7 @@ else
   sudo chmod 755 /etc/update-motd.d/01-weeeopen
   echo -e "\t\t\t\t\t\e[92m✔️"
 fi
+echo "Pesca "$versione" eseguita da "$nome" in data "$(date) > ~/Desktop/info_pesca.txt
 echo -en "\e[33mAggiorno il software."
 sudo xterm -geometry 80x24-0-0 -e apt update
 sudo xterm -geometry 80x24-0-0 -e apt install oneko -y
@@ -60,10 +61,9 @@ sudo xterm -geometry 80x24-0-0 -e apt install vlc xul-ext-ublock-origin libreoff
 echo -e "\t\e[92m✔️"
 echo -en "\e[94mPulisco i pacchetti superflui...\e[0;1m"
 killall oneko
-sudo xterm -geometry 80x24-0-0 -e apt purge oneko -y
+sudo xterm -geometry 80x24-0-0 -e apt purge git oneko -y
 sudo xterm -geometry 80x24-0-0 -e apt autoremove
 echo -e "\t\t\t\t\t\e[92m✔️"
-echo "Pesca "$versione" eseguita da "$nome" in data "$(date) > ~/Desktop/info_pesca.txt
 echo -e "\e[0;1mOra è possibile spegnere questo rottame e sbatterlo nella \e[0;102;30mG\e[103mr\e[102mo\e[103mu\e[102mn\e[103md\e[102mZ\e[103mo\e[102mn\e[103me\e[0;1m."
 echo -e "\e[36mSpero tu abbia aggiornato il tarallo. \e[5mVERO?\e[0;1m"
 if [[ $1 = "-sn" ]]
