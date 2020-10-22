@@ -1,5 +1,5 @@
 #!/bin/bash
-versione="V2.5.2 Tabacchiera"
+versione="V2.5.2_Tabacchiera"
 i=0
 # Questo è lo script da eseguire dopo l'installazione di Xubuntu sui PC da donare
 
