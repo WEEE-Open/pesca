@@ -62,7 +62,7 @@ echo -e "\t\e[92m✔️"
 echo -en "\e[94mPulisco i pacchetti superflui...\e[0;1m"
 killall oneko
 sudo xterm -geometry 80x24-0-0 -e apt purge git oneko -y
-sudo xterm -geometry 80x24-0-0 -e apt autoremove
+sudo xterm -geometry 80x24-0-0 -e apt autoremove -y
 echo -e "\t\t\t\t\t\e[92m✔️"
 echo -e "\e[0;1mOra è possibile spegnere questo rottame e sbatterlo nella \e[0;102;30mG\e[103mr\e[102mo\e[103mu\e[102mn\e[103md\e[102mZ\e[103mo\e[102mn\e[103me\e[0;1m."
 echo -e "\e[36mSpero tu abbia aggiornato il tarallo. \e[5mVERO?\e[0;1m"
