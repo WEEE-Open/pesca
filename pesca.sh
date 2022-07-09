@@ -1,13 +1,13 @@
 #!/bin/bash
-versione="V2.5.2_Tabacchiera"
+versione="V3.0_Percoca"
 i=0
-# Questo è lo script da eseguire dopo l'installazione di Xubuntu sui PC da donare
+# Questo è lo script da eseguire dopo l'installazione di linux Mint XFCE in modalità OEM sulla Golden Image
 
 #qualche controllino
 sudo echo -en "\e[0;1m"
 while ! wget -q --tries=10 --timeout=20 --spider http://weeeopen.polito.it/
 do
-  whiptail --title "Errore!" --backtitle "Pesca "$versione --msgbox "Non riesco a connettermi ad Internet! \nControlla il cavo ethernet, WEEEino caro." 10 65
+  whiptail --title "Errore!" --backtitle "Pesca "$versione --msgbox "Non riesco a connettermi ad Internet! \nControlla la connessione, WEEEino caro." 10 65
 done
 while sudo fuser /var/lib/dpkg/lock > /dev/null 2>&1
 do
@@ -52,30 +52,19 @@ else
   echo -e "\t\t\t\t\t\e[92m✔️"
 fi
 echo "Pesca "$versione" eseguita da "$nome" in data "$(date) > ~/Desktop/info_pesca.txt
-echo -en "\e[33mAggiorno il software."
+cc
 sudo xterm -geometry 80x24-0-0 -e apt update
 sudo xterm -geometry 80x24-0-0 -e apt install oneko -y
 echo -en "\e[33m Nel frattempo gioca pure con questo gattino...\e[0;1m"
 oneko -bg green&
 sudo xterm -geometry 80x24-0-0 -e apt full-upgrade -y
-sudo xterm -geometry 80x24-0-0 -e apt install vlc xul-ext-ublock-origin libreoffice-help-en-gb libreoffice-l10n-en-gb libreoffice-l10n-en-za mythes-en-au hunspell-en-au hyphen-en-gb thunderbird-locale-en-gb hunspell-en-gb hunspell-en-ca hunspell-en-za hyphen-en-ca -y
+sudo xterm -geometry 80x24-0-0 -e apt install vlc ssh -y
 echo -e "\t\e[92m✔️"
-echo -en "\e[94mPulisco i pacchetti superflui...\e[0;1m"
+ccccc
 killall oneko
 sudo xterm -geometry 80x24-0-0 -e apt purge git oneko -y
 sudo xterm -geometry 80x24-0-0 -e apt autoremove -y
 echo -e "\t\t\t\t\t\e[92m✔️"
-echo -e "\e[0;1mOra è possibile spegnere questo rottame e sbatterlo nella \e[0;102;30mG\e[103mr\e[102mo\e[103mu\e[102mn\e[103md\e[102mZ\e[103mo\e[102mn\e[103me\e[0;1m."
-echo -e "\e[36mSpero tu abbia aggiornato il tarallo. \e[5mVERO?\e[0;1m"
-if [[ $1 = "-sn" ]]
-then
-  shutdown now
-  exit 2
-fi
-if (whiptail --backtitle "Pesca "$versione --yesno "Ora vuoi spegnere il PC?" 8 78); then
-  shutdown now
-  exit 1
-fi
 echo -e "\e[1;92mFinito. Ciao.\e[0m"
 echo "premi invio per uscire."
 read response

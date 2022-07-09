@@ -2,37 +2,13 @@
 
 #### Preparazione Effettuata tramite Script dei Computer Anarchici
 
-Run this script after the installation of Xubuntu on the machine preparing it for donation.
+Run this script after the installation of Linux Mint XFCE in OEM mode to prepare the Golden Image.
 
-To do that, download the script:
-
-    git clone https://github.com/WEEE-Open/pesca.git
-    cd pesca
-
-change permission:
-
-    chmod +x pesca.sh
+To do that, after download repository, double click on `pesca.desktop`
     
-and run it:
-
-    ./pesca.sh
+Please don't run in as superuser. It will ask the admin password when necessary.
     
-Please don't use `sudo`. It will ask the admin password when necessary.
-    
-If the computer is damn slow and you are sleepy, hungry or whatever so you want to leave the computer alone you can do this by adding `-sn` parameter:
-
-    ./pesca.sh -sn
-    
-in order to shut down the machine auotmatically when the script ends its job.
-
-Enjoy.
-
 ![Plymouth screenshot](screenshot.png)
-
-## Canna da PESCA 🎣
-
-If you want a PESCA usb thumb drive, download pesca.img from [releases](https://github.com/WEEE-Open/pesca/releases) and copy it to the drive with `sudo dd if=pesca.img of=/dev/sdX1`.
-After that, plug it into the computer where you want to execute it and double-click the Pesca desktop entry.
 
 ## Only Plymouth
 
@@ -46,4 +22,4 @@ If you want to install only our fancy Plymouth theme:
     sudo update-initramfs -u
 
 Those commands work in Ubuntu and derivatives only.
-As they say in Tuscany: `Sono hazzi tua!` if you are running other distros like Debian or Arch.
+As they say in Tuscany: `Sono hazzi tua!` if you are running other distros like [Debian](https://wiki.debian.org/plymouth "How to install in Debian") or [Arch](https://wiki.archlinux.org/title/plymouth "How to install in Arch"), ecc.
