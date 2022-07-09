@@ -58,12 +58,12 @@ sudo xterm -geometry 80x24-0-0 -e apt install oneko -y
 echo -en "\e[33m Nel frattempo gioca pure con questo gattino...\e[0;1m"
 oneko -bg green&
 sudo xterm -geometry 80x24-0-0 -e apt full-upgrade -y
-sudo xterm -geometry 80x24-0-0 -e apt install vlc ssh -y
+tobeinstalled=$(whiptail --backtitle "Pesca "$versione --inputbox "Separa con uno spazio i software che vuoi installare" --nocancel 10 65 "$(cat lista-software)" 3>&1 1>&2 2>&3)
+sudo xterm -geometry 80x24-0-0 -e apt install $tobeinstalled ssh -y
 echo -e "\t\e[92m✔️"
 ccccc
 killall oneko
-sudo xterm -geometry 80x24-0-0 -e apt purge git oneko -y
-sudo xterm -geometry 80x24-0-0 -e apt autoremove -y
+sudo xterm -geometry 80x24-0-0 -e apt autoremove git oneko --purge -y
 echo -e "\t\t\t\t\t\e[92m✔️"
 echo -e "\e[1;92mFinito. Ciao.\e[0m"
 echo "premi invio per uscire."
