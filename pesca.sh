@@ -50,9 +50,14 @@ else
   sudo chown root:root /etc/update-motd.d/01-weeeopen
   sudo chmod 755 /etc/update-motd.d/01-weeeopen
   echo -e "\t\t\t\t\t\e[92m✔️"
+  echo -en "\e[32mCopio link sul desktop...\e[0;1m"
+  cp 'Gandalf 10 hours.desktop' ~/Desktop/
+  cp 'pesca.desktop' ~/Desktop/
+  echo "Path=$PWD" >> ~/Desktop/pesca.desktop
+  echo -e "\t\t\t\t\t\e[92m✔️"
 fi
 echo "Pesca "$versione" eseguita da "$nome" in data "$(date) > ~/Desktop/info_pesca.txt
-cc
+echo -en "\e[33mAggiorno il software."
 sudo xterm -geometry 80x24-0-0 -e apt update
 sudo xterm -geometry 80x24-0-0 -e apt install oneko -y
 echo -en "\e[33m Nel frattempo gioca pure con questo gattino...\e[0;1m"
@@ -60,8 +65,11 @@ oneko -bg green&
 sudo xterm -geometry 80x24-0-0 -e apt full-upgrade -y
 tobeinstalled=$(whiptail --backtitle "Pesca "$versione --inputbox "Separa con uno spazio i software che vuoi installare" --nocancel 10 65 "$(cat lista-software)" 3>&1 1>&2 2>&3)
 sudo xterm -geometry 80x24-0-0 -e apt install $tobeinstalled ssh -y
+#prima di spedire il pc disabilito ssh e cambio il fingerprint
+sudo sed -i 's/\/bin\/systemctl enable oem-config.service/\/bin\/systemctl disable ssh\n\t\/bin\/systemctl enable oem-config.service/' /usr/sbin/oem-config-prepare
+sudo ssh-keygen -A
 echo -e "\t\e[92m✔️"
-ccccc
+echo -en "\e[94mPulisco i pacchetti orfani...\e[0;1m"
 killall oneko
 sudo xterm -geometry 80x24-0-0 -e apt autoremove git oneko --purge -y
 echo -e "\t\t\t\t\t\e[92m✔️"
