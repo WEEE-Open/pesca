@@ -6,7 +6,7 @@ i=0
 function removestress() {
 
     if (whiptail --yesno --defaultno "Vuoi eliminare il pacchetto stress?" 8 78); then
-        sudo apt autoremove --purge stress
+        sudo apt autoremove --purge stress -y
     fi
     exit 0
 
