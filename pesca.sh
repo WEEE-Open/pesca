@@ -54,7 +54,7 @@ else
   echo vm.swappiness=25 | sudo tee -a /etc/sysctl.conf > /dev/null
   echo -e "\t\t\t\t\t\e[92m✔️"
   echo -en "\e[32mScarico ed installo gli sfondi...\e[0;1m"
-  #wget https://github.com/WEEE-Open/pesca/releases/download/V3.0/sfondeee_1.0_all.deb -O ~/Scaricati/sfondeee_1.0_all.deb
+  wget https://github.com/WEEE-Open/pesca/releases/download/V3.0/sfondeee_1.0_all.deb -O ~/Scaricati/sfondeee_1.0_all.deb
   sudo xterm -geometry 80x24-0-0 -e apt install ~/Scaricati/sfondeee_1.0_all.deb
   sudo cp xfce4-desktop.xml /etc/xdg/xdg-xfce/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
   echo -e "\t\t\t\t\t\e[92m✔️"
