@@ -46,7 +46,7 @@ else
   sudo cp -r weee-logo/ /usr/share/plymouth/themes/weee-logo
   sudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/weee-logo/weee-logo.plymouth 100
   sudo update-alternatives --set default.plymouth /usr/share/plymouth/themes/weee-logo/weee-logo.plymouth
-  sudo update-initramfs -u
+  sudo xterm -geometry 80x24-0-0 -e update-initramfs -u
   sudo cp 01-weeeopen /etc/update-motd.d/01-weeeopen
   sudo chown root:root /etc/update-motd.d/01-weeeopen
   sudo chmod 755 /etc/update-motd.d/01-weeeopen
