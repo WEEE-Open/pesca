@@ -75,6 +75,7 @@ killall oneko
 sudo xterm -geometry 80x24-0-0 -e apt autoremove oneko --purge -y
 sudo journalctl --rotate
 sudo journalctl --vacuum-time=1s 2>/dev/null > /dev/null
+sudo tune2fs -m 0 /dev/sda1 > /dev/null
 echo -e "\t\t\t\t\t\t\e[92m✔️"
 echo -e "\e[1;92mFinito. Ciao.\e[0m"
 echo "premi invio per uscire."
