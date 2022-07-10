@@ -62,6 +62,9 @@ else
   cp 'Gandalf 10 hours.desktop' ~/Desktop/
   cp 'pesca.desktop' ~/Desktop/
   echo "Path=$PWD" >> ~/Desktop/pesca.desktop
+  cp 'StressCPU.desktop' ~/Desktop/
+  echo "Path=$PWD" >> ~/Desktop/StressCPU.desktop
+  cp 'StressGPU.desktop' ~/Desktop/
   echo -e "\t\t\t\t\t\t\e[92m✔️"
 fi
 echo "Pesca "$versione" eseguita da "$nome" in data "$(date) > ~/Desktop/info_pesca.txt
@@ -92,7 +95,6 @@ sudo fallocate -l ${ram}K /swapfile
 sudo mkswap /swapfile 2>/dev/null > /dev/null
 sudo swapon /swapfile
 echo -e "\t\t\t\e[92m✔️"
-echo -e "\e[1;92mFinito. Ciao.\e[0m"
-echo "premi invio per uscire."
+echo -e "\e[1;92mFinito.\tPremi invio per uscire.\e[0m"
 read response
 exit 0

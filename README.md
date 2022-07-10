@@ -17,6 +17,7 @@ move inside this repo and execute:
     dpkg-deb --build --root-owner-group sfondeee_1.0_all
 
 This package works with all desktop environment!
+
 The images files are licensed under a Creative Commons Attribution-ShareAlike 4.0 International License
 
 ## Only Plymouth

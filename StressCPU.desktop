@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Stress CPU
+Comment=mette sotto stress la PCU e mostra le temperature
+Exec=./stressCPU.sh
+Icon=mintdrivers
+Terminal=true
+StartupNotify=false

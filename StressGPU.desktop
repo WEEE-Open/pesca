@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Stress GPU
+Comment=benchmarck della GPU in OpenGL
+Exec=glxgears
+Icon=applications-graphics
+Terminal=true
+StartupNotify=false
