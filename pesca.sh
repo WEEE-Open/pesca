@@ -39,7 +39,6 @@ then
 else
   echo -en "\e[31mAttivo aggiornamento orario tramite NTP...\e[0;1m"
   sudo apt install systemd-timesyncd xterm -y 2>/dev/null >/dev/null
-  sudo apt install systemd-timesyncd xterm -y 3>&1 1>&2 2>&3
   echo NTP=ntp1.inrim.it ntp2.inrim.it | sudo tee -a /etc/systemd/timesyncd.conf > /dev/null
   sudo timedatectl set-ntp true
   echo -e "\t\t\t\t\e[92m✔️"
