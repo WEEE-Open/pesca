@@ -1,5 +1,5 @@
 #!/bin/bash
-versione="V3.0_Percoca"
+versione="V3.0 Percoca"
 i=0
 # Questo è lo script da eseguire dopo l'installazione di linux Mint XFCE in modalità OEM sulla Golden Image
 
@@ -32,6 +32,7 @@ done
 #inizio
 echo -e "Benvenuto nella \e[33m🍑 \e[0;1m"$versione"!"
 nome=$(whiptail --backtitle "Pesca "$versione --inputbox "Come ti chiami?" --nocancel 10 65 "WEEEino a caso"  3>&1 1>&2 2>&3)
+killall light-locker
 #verifico se è stata già eseguita.
 if test -f ~/Desktop/info_pesca.txt
 then 
@@ -54,7 +55,7 @@ else
   echo -e "\t\t\t\t\t\e[92m✔️"
   echo -en "\e[32mScarico ed installo gli sfondi...\e[0;1m"
   #wget https://github.com/WEEE-Open/pesca/releases/download/V3.0/sfondeee_1.0_all.deb -O ~/Scaricati/sfondeee_1.0_all.deb
-  sudo apt install ~/Scaricati/sfondeee_1.0_all.deb
+  sudo xterm -geometry 80x24-0-0 -e apt install ~/Scaricati/sfondeee_1.0_all.deb
   sudo cp xfce4-desktop.xml /etc/xdg/xdg-xfce/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
   echo -e "\t\t\t\t\t\e[92m✔️"
   echo -en "\e[32mCopio link sul desktop...\e[0;1m"
