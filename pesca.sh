@@ -77,6 +77,15 @@ sudo journalctl --rotate
 sudo journalctl --vacuum-time=1s 2>/dev/null > /dev/null
 sudo tune2fs -m 0 /dev/sda1 > /dev/null
 echo -e "\t\t\t\t\t\t\e[92m✔️"
+echo -en "\e[94mAdeguo la swap alla quantità di RAM "
+ram="$(cat /proc/meminfo | grep MemTotal | awk {'print $2'})"
+echo -en "$((${ram}/1000)) MiB ...\e[0;1m"
+sudo swapoff /swapfile
+sudo fallocate -l ${ram}K /swapfile
+sudo mkswap /swapfile 2>/dev/null > /dev/null
+sudo swapon /swapfile
+echo vm.swappiness=25 | sudo tee -a /etc/sysctl.conf > /dev/null
+echo -e "\t\t\t\e[92m✔️"
 echo -e "\e[1;92mFinito. Ciao.\e[0m"
 echo "premi invio per uscire."
 read response
