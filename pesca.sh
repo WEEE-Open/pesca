@@ -55,7 +55,7 @@ else
   cp 'Gandalf 10 hours.desktop' ~/Desktop/
   cp 'pesca.desktop' ~/Desktop/
   echo "Path=$PWD" >> ~/Desktop/pesca.desktop
-  echo -e "\t\t\t\t\t\e[92m✔️"
+  echo -e "\t\t\t\t\t\t\e[92m✔️"
 fi
 echo "Pesca "$versione" eseguita da "$nome" in data "$(date) > ~/Desktop/info_pesca.txt
 echo -en "\e[33mAggiorno il software."
@@ -73,7 +73,7 @@ echo -e "\t\e[92m✔️"
 echo -en "\e[94mPulisco i pacchetti orfani...\e[0;1m"
 killall oneko
 sudo xterm -geometry 80x24-0-0 -e apt autoremove git oneko --purge -y
-echo -e "\t\t\t\t\t\e[92m✔️"
+echo -e "\t\t\t\t\t\t\e[92m✔️"
 echo -e "\e[1;92mFinito. Ciao.\e[0m"
 echo "premi invio per uscire."
 read response
