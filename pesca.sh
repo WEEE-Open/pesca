@@ -32,7 +32,7 @@ done
 #inizio
 echo -e "Benvenuto nella \e[33m🍑 \e[0;1m"$versione"!"
 nome=$(whiptail --backtitle "Pesca "$versione --inputbox "Come ti chiami?" --nocancel 10 65 "WEEEino a caso"  3>&1 1>&2 2>&3)
-killall light-locker
+killall light-locker > /dev/null 2>&1
 #verifico se è stata già eseguita.
 if test -f ~/Desktop/info_pesca.txt
 then 
