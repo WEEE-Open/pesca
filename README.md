@@ -10,6 +10,15 @@ Please don't run in as superuser. It will ask the admin password when necessary.
     
 ![Plymouth screenshot](screenshot.png)
 
+## How to build sfondeee.deb
+
+move inside this repo and execute:
+
+    dpkg-deb --build --root-owner-group sfondeee_1.0_all
+
+This package works with all desktop environment!
+The images files are licensed under a Creative Commons Attribution-ShareAlike 4.0 International License
+
 ## Only Plymouth
 
 If you want to install only our fancy Plymouth theme:

@@ -50,6 +50,12 @@ else
   sudo cp 01-weeeopen /etc/update-motd.d/01-weeeopen
   sudo chown root:root /etc/update-motd.d/01-weeeopen
   sudo chmod 755 /etc/update-motd.d/01-weeeopen
+  echo vm.swappiness=25 | sudo tee -a /etc/sysctl.conf > /dev/null
+  echo -e "\t\t\t\t\t\e[92m✔️"
+  echo -en "\e[32mScarico ed installo gli sfondi...\e[0;1m"
+  #wget https://github.com/WEEE-Open/pesca/releases/download/V3.0/sfondeee_1.0_all.deb -O ~/Scaricati/sfondeee_1.0_all.deb
+  sudo apt install ~/Scaricati/sfondeee_1.0_all.deb
+  sudo cp xfce4-desktop.xml /etc/xdg/xdg-xfce/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
   echo -e "\t\t\t\t\t\e[92m✔️"
   echo -en "\e[32mCopio link sul desktop...\e[0;1m"
   cp 'Gandalf 10 hours.desktop' ~/Desktop/
@@ -84,7 +90,6 @@ sudo swapoff /swapfile
 sudo fallocate -l ${ram}K /swapfile
 sudo mkswap /swapfile 2>/dev/null > /dev/null
 sudo swapon /swapfile
-echo vm.swappiness=25 | sudo tee -a /etc/sysctl.conf > /dev/null
 echo -e "\t\t\t\e[92m✔️"
 echo -e "\e[1;92mFinito. Ciao.\e[0m"
 echo "premi invio per uscire."

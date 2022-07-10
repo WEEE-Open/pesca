@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE wallpapers SYSTEM "gnome-wp-list.dtd">
+<wallpapers>
+    <wallpaper deleted="false">
+        <name>CPU</name>
+        <filename>/usr/share/backgrounds/WEEE-Open/CPU.jpg</filename>
+        <options>zoom</options>
+        <shade_type>solid</shade_type>
+        <pcolor>#000000</pcolor>
+        <scolor>#000000</scolor>
+        <artist>WEEE-Open</artist>
+    </wallpaper>
+    <wallpaper deleted="false">
+        <name>HDD</name>
+        <filename>/usr/share/backgrounds/WEEE-Open/HDD.jpg</filename>
+        <options>zoom</options>
+        <shade_type>solid</shade_type>
+        <pcolor>#000000</pcolor>
+        <scolor>#000000</scolor>
+        <artist>WEEE-Open</artist>
+    </wallpaper>
+    <wallpaper deleted="false">
+        <name>PCI</name>
+        <filename>/usr/share/backgrounds/WEEE-Open/PCI.jpg</filename>
+        <options>zoom</options>
+        <shade_type>solid</shade_type>
+        <pcolor>#000000</pcolor>
+        <scolor>#000000</scolor>
+        <artist>WEEE-Open</artist>
+    </wallpaper>
+</wallpapers>

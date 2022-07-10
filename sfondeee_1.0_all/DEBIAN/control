@@ -1,0 +1,9 @@
+Package: sfondeee
+Version: 1.0
+Architecture: all
+Installed-Size: 4909
+Maintainer: Team WEEE Open
+Section: admin
+Priority: optional
+Description: Cool wallpapers about computer stuff
+ This package contains quality desktop backgrounds made by Team WEEE Open https://weeeopen.polito.it
