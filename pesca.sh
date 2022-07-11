@@ -7,21 +7,21 @@ i=0
 sudo echo -en "\e[0;1m"
 while ! wget -q --tries=10 --timeout=20 --spider http://weeeopen.polito.it/
 do
-  whiptail --title "Errore!" --backtitle "Pesca "$versione --msgbox "Non riesco a connettermi ad Internet! \nControlla la connessione, WEEEino caro." 10 65
+  whiptail --title "Errore!" --msgbox "Non riesco a connettermi ad Internet! \nControlla la connessione, WEEEino caro." 10 65
 done
 while sudo fuser /var/lib/dpkg/lock > /dev/null 2>&1
 do
   if [ $i -ge 5 ]
   then
     i=0
-    if ! whiptail --title "dpkg occupato" --backtitle "Pesca "$versione --yesno "dpkg è già in esecuzione, quindi non posso continuare.\nVuoi provare con la forza bruta? [Sconsigliato]" --yes-button "Riprova" --no-button "Uccidi apt" 10 65
+    if ! whiptail --title "dpkg occupato" --yesno "dpkg è già in esecuzione, quindi non posso continuare.\nVuoi provare con la forza bruta? [Sconsigliato]" --yes-button "Riprova" --no-button "Uccidi apt" 10 65
     then
       sudo fuser -vk /var/lib/dpkg/lock > /dev/null
       sudo dpkg --configure -a > /dev/null
     fi
   else
     i=$(( $i + 1 ))
-    if ! whiptail --title "dpkg occupato" --backtitle "Pesca "$versione --yesno "dpkg è già in esecuzione, quindi non posso continuare.\nTi consiglio di riprovare più tardi o di riavviare il PC." --yes-button "Riprova" --no-button "Riavvia" 10 65
+    if ! whiptail --title "dpkg occupato" --yesno "dpkg è già in esecuzione, quindi non posso continuare.\nTi consiglio di riprovare più tardi o di riavviare il PC." --yes-button "Riprova" --no-button "Riavvia" 10 65
     then
       reboot
       exit -1
@@ -31,7 +31,7 @@ done
 
 #inizio
 echo -e "Benvenutǝ nella \e[33m🍑 \e[0;1m"$versione"!"
-nome=$(whiptail --backtitle "Pesca "$versione --inputbox "Come ti chiami?" --nocancel 10 65 "WEEEino a caso"  3>&1 1>&2 2>&3)
+nome=$(whiptail --inputbox "Come ti chiami?" --nocancel 10 65 "WEEEino a caso"  3>&1 1>&2 2>&3)
 killall light-locker > /dev/null 2>&1
 sudo apt update > /dev/null 2>&1
 #verifico se è stata già eseguita.
@@ -48,8 +48,8 @@ else
   echo -e "\t\t\t\t\e[92m✔️"
   echo -en "\e[32mInstallo motd e tema Plymouth...\e[0;1m"
   sudo cp -r weee-logo/ /usr/share/plymouth/themes/weee-logo
-  sudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/weee-logo/weee-logo.plymouth 100
-  sudo update-alternatives --set default.plymouth /usr/share/plymouth/themes/weee-logo/weee-logo.plymouth
+  sudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/weee-logo/weee-logo.plymouth 100 2>/dev/null >/dev/null
+  sudo update-alternatives --set default.plymouth /usr/share/plymouth/themes/weee-logo/weee-logo.plymouth 2>/dev/null >/dev/null
   sudo xterm -geometry 80x24-0-0 -e update-initramfs -u
   sudo cp 01-weeeopen /etc/update-motd.d/01-weeeopen
   sudo chown root:root /etc/update-motd.d/01-weeeopen
@@ -92,7 +92,7 @@ else
 fi
 #prima di spedire il pc disabilito ssh e cambio il fingerprint
 sudo sed -i 's/\/bin\/systemctl enable oem-config.service/\/bin\/systemctl disable ssh\n\t\/bin\/systemctl enable oem-config.service/' /usr/sbin/oem-config-prepare
-sudo ssh-keygen -A
+sudo ssh-keygen -A 2>/dev/null >/dev/null
 echo -e "\t\e[92m✔️"
 echo -en "\e[94mPulisco i pacchetti orfani...\e[0;1m"
 killall oneko
