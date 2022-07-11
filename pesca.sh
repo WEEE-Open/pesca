@@ -30,11 +30,14 @@ do
 done
 
 #inizio
-echo -e "Benvenuto nella \e[33m🍑 \e[0;1m"$versione"!"
+echo -e "Benvenutǝ nella \e[33m🍑 \e[0;1m"$versione"!"
 nome=$(whiptail --backtitle "Pesca "$versione --inputbox "Come ti chiami?" --nocancel 10 65 "WEEEino a caso"  3>&1 1>&2 2>&3)
 killall light-locker > /dev/null 2>&1
+sudo apt update > /dev/null 2>&1
 #verifico se è stata già eseguita.
-if test -f ~/Desktop/info_pesca.txt
+test -f ~/Desktop/info_pesca.txt
+laprima=$?
+if [ "$laprima" -eq 0 ]
 then 
   echo -e "\e[32mVedo che non è la prima volta che mi esegui.\t\t\t\t\e[93m!"
 else
@@ -51,10 +54,11 @@ else
   sudo cp 01-weeeopen /etc/update-motd.d/01-weeeopen
   sudo chown root:root /etc/update-motd.d/01-weeeopen
   sudo chmod 755 /etc/update-motd.d/01-weeeopen
+  #imposto la swappiness a 25
   echo vm.swappiness=25 | sudo tee -a /etc/sysctl.conf > /dev/null
   echo -e "\t\t\t\t\t\e[92m✔️"
   echo -en "\e[32mScarico ed installo gli sfondi...\e[0;1m"
-  wget https://github.com/WEEE-Open/pesca/releases/download/V3.0/sfondeee_1.0_all.deb -O ~/Scaricati/sfondeee_1.0_all.deb
+  xterm -geometry 80x24-0-0 -e wget https://github.com/WEEE-Open/pesca/releases/download/V3.0/sfondeee_1.0_all.deb -O ~/Scaricati/sfondeee_1.0_all.deb
   sudo xterm -geometry 80x24-0-0 -e apt install ~/Scaricati/sfondeee_1.0_all.deb
   sudo cp xfce4-desktop.xml /etc/xdg/xdg-xfce/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
   echo -e "\t\t\t\t\t\e[92m✔️"
@@ -69,13 +73,23 @@ else
 fi
 echo "Pesca "$versione" eseguita da "$nome" in data "$(date) > ~/Desktop/info_pesca.txt
 echo -en "\e[33mAggiorno il software."
-sudo xterm -geometry 80x24-0-0 -e apt update
+sudo xterm -geometry 80x24-0-0 -e dpkg --configure -a
+sudo xterm -geometry 80x24-0-0 -e apt --fix-broken install
 sudo xterm -geometry 80x24-0-0 -e apt install oneko -y
 echo -en "\e[33m Nel frattempo gioca pure con questo gattino...\e[0;1m"
 oneko -bg green&
 sudo xterm -geometry 80x24-0-0 -e apt full-upgrade -y
-tobeinstalled=$(whiptail --backtitle "Pesca "$versione --inputbox "Separa con uno spazio i software che vuoi installare" --nocancel 10 65 "$(cat lista-software)" 3>&1 1>&2 2>&3)
-sudo xterm -geometry 80x24-0-0 -e apt install $tobeinstalled ssh -y
+if [ "$laprima" -eq 0 ]
+then
+  if (whiptail --yesno --defaultno "Vuoi installare altri software?" 8 78)
+  then
+    tobeinstalled=$(whiptail --inputbox "Separa con uno spazio i software che vuoi installare" --nocancel 10 65 "$(cat lista-software)" 3>&1 1>&2 2>&3)
+    sudo xterm -geometry 80x24-0-0 -e apt install $tobeinstalled -y
+  fi
+else
+  tobeinstalled=$(whiptail --inputbox "Separa con uno spazio i software che vuoi installare" --nocancel 10 65 "$(cat lista-software)" 3>&1 1>&2 2>&3)
+  sudo xterm -geometry 80x24-0-0 -e apt install $tobeinstalled ssh -y
+fi
 #prima di spedire il pc disabilito ssh e cambio il fingerprint
 sudo sed -i 's/\/bin\/systemctl enable oem-config.service/\/bin\/systemctl disable ssh\n\t\/bin\/systemctl enable oem-config.service/' /usr/sbin/oem-config-prepare
 sudo ssh-keygen -A
@@ -83,8 +97,10 @@ echo -e "\t\e[92m✔️"
 echo -en "\e[94mPulisco i pacchetti orfani...\e[0;1m"
 killall oneko
 sudo xterm -geometry 80x24-0-0 -e apt autoremove oneko --purge -y
+# svuoto il journal
 sudo journalctl --rotate
 sudo journalctl --vacuum-time=1s 2>/dev/null > /dev/null
+# riduco lo spazio risevato
 sudo tune2fs -m 0 /dev/sda1 > /dev/null
 echo -e "\t\t\t\t\t\t\e[92m✔️"
 echo -en "\e[94mAdeguo la swap alla quantità di RAM "
