@@ -4,12 +4,10 @@ i=0
 # Questo è lo script per eseguire uno stress test sulla cpu
 
 function removestress() {
-
-    if (whiptail --yesno --defaultno "Vuoi eliminare il pacchetto stress?" 8 78); then
+    if (whiptail --yesno "Vuoi eliminare il pacchetto stress?" 8 78); then
         sudo apt autoremove --purge stress -y
     fi
     exit 0
-
 }
 
 #qualche controllino
