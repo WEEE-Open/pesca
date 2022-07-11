@@ -71,7 +71,7 @@ else
   cp 'StressGPU.desktop' ~/Desktop/
   echo -e "\t\t\t\t\t\t\e[92m✔️"
 fi
-echo "Pesca "$versione" eseguita da "$nome" in data "$(date) > ~/Desktop/info_pesca.txt
+echo "Pesca "$versione" eseguita da "$nome" in data "$(date) >> ~/Desktop/info_pesca.txt
 echo -en "\e[33mAggiorno il software."
 sudo xterm -geometry 80x24-0-0 -e dpkg --configure -a
 sudo xterm -geometry 80x24-0-0 -e apt --fix-broken install
