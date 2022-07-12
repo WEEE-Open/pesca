@@ -2,8 +2,8 @@
 Version=1.0
 Type=Application
 Name=Stress GPU
-Comment=benchmarck della GPU in OpenGL
-Exec=glxgears
+Comment=Programma dimostrativo in OpenGL
+Exec=env vblank_mode=0 GALLIUM_HUD=cpu,fps glxgears -geometry 650x650
 Icon=applications-graphics
-Terminal=true
+Terminal=false
 StartupNotify=false
